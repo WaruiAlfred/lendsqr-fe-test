@@ -28,15 +28,15 @@ const Login = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Box>
           <Image
             src={unionSvg}
             className={styles.unionSvg}
             style={{
               position: "absolute",
-              width: "24.75px",
-              height: "25px",
+              width: "2.5rem",
+              height: "2.5rem",
             }}
           />
           <Image
@@ -44,8 +44,8 @@ const Login = () => {
             className={styles.lendsqrSvg}
             style={{
               position: "absolute",
-              width: "138.44px",
-              height: "36px",
+              width: "13.8rem",
+              height: "3.6rem",
             }}
           />
         </Box>
@@ -54,17 +54,17 @@ const Login = () => {
           className={styles.loginSvg}
           style={{
             position: "absolute",
-            width: "600px",
-            height: "337.57px",
+            width: "60rem",
+            height: "33.7rem",
           }}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Box
           sx={{
             position: "absolute",
-            top: "215px",
-            width: "447px",
+            top: "21.5rem",
+            width: "44.7rem",
           }}
         >
           <Container maxWidth="md" className={styles.form}>
@@ -74,8 +74,8 @@ const Login = () => {
                 fontFamily: "Avenir Next",
                 fontStyle: "normal",
                 fontWeight: 700,
-                fontSize: "40px",
-                lineHeight: "55px",
+                fontSize: "4.0rem",
+                lineHeight: "5.5rem",
                 letterSpacing: "-0.04em",
               }}
             >
@@ -87,8 +87,8 @@ const Login = () => {
                 fontFamily: "Avenir Next",
                 fontStyle: "normal",
                 fontWeight: 400,
-                fontSize: "20px",
-                lineHeight: "27px",
+                fontSize: "2.0rem",
+                lineHeight: "2.7rem",
               }}
             >
               Enter details to login.
@@ -110,7 +110,7 @@ const Login = () => {
                   // helperText={errors?.email ? errors.email.message : null}
                   className={styles["form__field"]}
                   sx={{
-                    top: "-30px",
+                    top: "-3.0rem",
                   }}
                 />
                 <TextField
@@ -124,7 +124,7 @@ const Login = () => {
                   // helperText={errors?.password ? errors.password.message : null}
                   className={styles["form__field"]}
                   sx={{
-                    top: "-2px",
+                    top: "-0.2rem",
                   }}
                 />
                 <Button className={styles["form__btn-password"]}>

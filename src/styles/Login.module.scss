@@ -1,73 +1,82 @@
 .unionSvg {
-  left: 97px;
-  top: 107.67px;
+  position: absolute;
+  // width: 24.75rem;
+  // height: 25rem;
+  left: 9.7rem;
+  top: 10.8rem;
   // background: linear-gradient(31.06deg, #213f7d -30.58%, #39cdcc 116.98%);
 }
 
 .lendsqrSvg {
-  left: 132.33px;
-  top: 106px;
+  position: absolute;
+  // width: 138.44rem;
+  // height: 36rem;
+  left: 13.2rem;
+  top: 10.6rem;
   // background: #213f7d;
 }
 
 .loginSvg {
-  left: 67px;
-  top: 281px;
+  position: absolute;
+  // width: 600rem;
+  // height: 337.57rem;
+  left: 6.7rem;
+  top: 28.1rem;
 }
 
 .welcomeTxt {
-  width: 183px;
-  height: 55px;
-  left: 836px;
+  width: 18.3rem;
+  height: 5.5rem;
+  left: 83.6rem;
   color: #213f7d;
 }
 
 .form {
   &__header {
     position: absolute;
-    width: 194px;
-    height: 28px;
-    left: 35px;
-    top: 70px;
+    width: 19.4rem;
+    height: 2.8rem;
+    left: 3.5rem;
+    top: 7rem;
     color: #545f7d;
   }
 
   &__body {
     position: absolute;
-    height: 50px;
+    height: 5rem;
     width: 100%;
-    top: 170px;
+    top: 17rem;
   }
 
   &__field {
     position: absolute;
-    width: 447px;
-    height: 50px;
-    // left: 836px;
+    width: 44.7rem;
+    height: 5rem;
+    // left: 836rem;
     background: #ffffff;
-    border: 2px solid rgba(84, 95, 125, 0.15);
-    border-radius: 5px;
+    border: 0.2rem solid rgba(84, 95, 125, 0.15);
+    border-radius: 0.5rem;
   }
 
   &__btn {
     &-password {
       position: absolute;
-      width: 147px;
-      height: 17px;
-      // left: 836px;
-      top: 30px;
+      width: 100%;
+      height: 1.7rem;
+      // left: 836rem;
+      top: 3rem;
 
       font-family: "Avenir Next";
       font-style: normal;
       font-weight: 600;
-      font-size: 12px;
-      line-height: 16px;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
 
-      text-align: right;
+      text-align: left;
       letter-spacing: 0.1em;
       text-transform: uppercase;
 
-      color: #39cdcc;
+      color: #39cdcc !important;
     }
 
     &-submit {
@@ -77,8 +86,9 @@
       top: 110%;
       bottom: 32.11%;
 
-      background: #39cdcc;
-      border-radius: 8px;
+      font-weight: bold;
+      background: #39cdcc !important;
+      border-radius: 0.8rem;
     }
   }
 }
