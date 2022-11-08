@@ -1,0 +1,84 @@
+.unionSvg {
+  left: 97px;
+  top: 107.67px;
+  // background: linear-gradient(31.06deg, #213f7d -30.58%, #39cdcc 116.98%);
+}
+
+.lendsqrSvg {
+  left: 132.33px;
+  top: 106px;
+  // background: #213f7d;
+}
+
+.loginSvg {
+  left: 67px;
+  top: 281px;
+}
+
+.welcomeTxt {
+  width: 183px;
+  height: 55px;
+  left: 836px;
+  color: #213f7d;
+}
+
+.form {
+  &__header {
+    position: absolute;
+    width: 194px;
+    height: 28px;
+    left: 35px;
+    top: 70px;
+    color: #545f7d;
+  }
+
+  &__body {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    top: 170px;
+  }
+
+  &__field {
+    position: absolute;
+    width: 447px;
+    height: 50px;
+    // left: 836px;
+    background: #ffffff;
+    border: 2px solid rgba(84, 95, 125, 0.15);
+    border-radius: 5px;
+  }
+
+  &__btn {
+    &-password {
+      position: absolute;
+      width: 147px;
+      height: 17px;
+      // left: 836px;
+      top: 30px;
+
+      font-family: "Avenir Next";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+
+      text-align: right;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      color: #39cdcc;
+    }
+
+    &-submit {
+      position: absolute;
+      left: 1%;
+      right: 10.9%;
+      top: 110%;
+      bottom: 32.11%;
+
+      background: #39cdcc;
+      border-radius: 8px;
+    }
+  }
+}
