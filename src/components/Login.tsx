@@ -8,10 +8,9 @@ import {
 } from "@mui/material";
 import Image from "mui-image";
 import { useForm } from "react-hook-form";
-import unionSvg from "../assets/Union.svg";
-import lendsqrSvg from "../assets/lendsqr.svg";
 import loginSvg from "../assets/pablo-sign-in 1.svg";
-import styles from "../styles/Login.module.scss";
+import styles from "../styles/components/Login.module.scss";
+import LendsqrLogo from "./helpers/LendsqrLogo";
 
 const Login = () => {
   const {
@@ -29,43 +28,26 @@ const Login = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
-        <Box>
-          <Image
-            src={unionSvg}
-            className={styles.unionSvg}
-            style={{
-              position: "absolute",
-              width: "2.5rem",
-              height: "2.5rem",
-            }}
-          />
-          <Image
-            src={lendsqrSvg}
-            className={styles.lendsqrSvg}
-            style={{
-              position: "absolute",
-              width: "13.8rem",
-              height: "3.6rem",
-            }}
-          />
-        </Box>
+        <LendsqrLogo />
         <Image
           src={loginSvg}
           className={styles.loginSvg}
           style={{
-            position: "absolute",
-            width: "60rem",
-            height: "33.7rem",
+            // position: "absolute",
+            width: "37.5rem",
+            height: "21.1rem",
           }}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
         <Box
-          sx={{
-            position: "absolute",
-            top: "21.5rem",
-            width: "44.7rem",
-          }}
+          sx={
+            {
+              // position: "absolute",
+              // top: "13.4rem",
+              // width: "27.9rem",
+            }
+          }
         >
           <Container maxWidth="md" className={styles.form}>
             <Typography
@@ -74,8 +56,8 @@ const Login = () => {
                 fontFamily: "Avenir Next",
                 fontStyle: "normal",
                 fontWeight: 700,
-                fontSize: "4.0rem",
-                lineHeight: "5.5rem",
+                fontSize: "2.5rem",
+                lineHeight: "3.4rem",
                 letterSpacing: "-0.04em",
               }}
             >
@@ -87,8 +69,8 @@ const Login = () => {
                 fontFamily: "Avenir Next",
                 fontStyle: "normal",
                 fontWeight: 400,
-                fontSize: "2.0rem",
-                lineHeight: "2.7rem",
+                fontSize: "1.25rem",
+                lineHeight: "1.7rem",
               }}
             >
               Enter details to login.
@@ -109,9 +91,11 @@ const Login = () => {
                   error={!!errors?.email}
                   // helperText={errors?.email ? errors.email.message : null}
                   className={styles["form__field"]}
-                  sx={{
-                    top: "-3.0rem",
-                  }}
+                  sx={
+                    {
+                      // top: "-1.9rem",
+                    }
+                  }
                 />
                 <TextField
                   id="password"
@@ -123,9 +107,11 @@ const Login = () => {
                   error={!!errors?.email}
                   // helperText={errors?.password ? errors.password.message : null}
                   className={styles["form__field"]}
-                  sx={{
-                    top: "-0.2rem",
-                  }}
+                  sx={
+                    {
+                      // top: "-0.125rem",
+                    }
+                  }
                 />
                 <Button className={styles["form__btn-password"]}>
                   Forgot Password?
