@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import Filter from "./Filter";
+import FilterButton from "./filters/FilterButton";
 
 interface Column {
   id: "organization" | "username" | "email" | "phone" | "date" | "status";
@@ -109,7 +109,7 @@ const rows = [
   // createData("Brazil", "BR", 210147125, 8515767),
 ];
 
-const UserDetails = () => {
+const SpecificUsersDetails = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -137,7 +137,7 @@ const UserDetails = () => {
                   style={{ minWidth: column.minWidth }}
                 >
                   {column.label}
-                  <Filter />
+                  <FilterButton />
                 </TableCell>
               ))}
             </TableRow>
@@ -177,4 +177,4 @@ const UserDetails = () => {
   );
 };
 
-export default UserDetails;
+export default SpecificUsersDetails;

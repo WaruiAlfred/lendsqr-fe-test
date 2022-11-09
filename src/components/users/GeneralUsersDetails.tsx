@@ -3,7 +3,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import MoneyOutlinedIcon from "@mui/icons-material/MoneyOutlined";
-import UsersDetailsCard from "./UsersDetailsCard";
+import GeneralUsersDetailsCard from "./GeneralUsersDetailsCard";
 
 const details = [
   {
@@ -32,20 +32,20 @@ const details = [
   },
 ];
 
-const UsersDetails = () => {
+const GeneralUsersDetails = () => {
   return (
     <Box sx={{ display: "flex" }}>
       {details.map((detail) => (
-        <UsersDetailsCard
+        <GeneralUsersDetailsCard
           key={detail.id}
           title={detail.title}
           totalNumber={detail.totalNumber}
         >
           {detail.icon}
-        </UsersDetailsCard>
+        </GeneralUsersDetailsCard>
       ))}
     </Box>
   );
 };
 
-export default UsersDetails;
+export default GeneralUsersDetails;

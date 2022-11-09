@@ -1,22 +1,22 @@
 import { Grid } from "@mui/material";
 import Title from "./Title";
-import UserDetails from "./UserDetails";
-import UsersDetails from "./UsersDetails";
+import SpecificUsersDetails from "./SpecificUsersDetails";
+import GeneralUsersDetails from "./GeneralUsersDetails";
 
-const Content = () => {
+const Users = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Title />
       </Grid>
       <Grid item xs={12}>
-        <UsersDetails />
+        <GeneralUsersDetails />
       </Grid>
       <Grid item xs={12}>
-        <UserDetails />
+        <SpecificUsersDetails />
       </Grid>
     </Grid>
   );
 };
 
-export default Content;
+export default Users;

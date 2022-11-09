@@ -7,7 +7,7 @@ type cardPropTypes = {
   totalNumber: String;
 };
 
-const UsersDetailsCard: FC<cardPropTypes> = ({
+const GeneralUsersDetailsCard: FC<cardPropTypes> = ({
   children,
   title,
   totalNumber,
@@ -29,4 +29,4 @@ const UsersDetailsCard: FC<cardPropTypes> = ({
   );
 };
 
-export default UsersDetailsCard;
+export default GeneralUsersDetailsCard;
