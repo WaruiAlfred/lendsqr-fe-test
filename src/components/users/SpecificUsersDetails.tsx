@@ -20,6 +20,7 @@ import {
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import PersonRemoveAlt1OutlinedIcon from "@mui/icons-material/PersonRemoveAlt1Outlined";
 import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
+import { Link } from "react-router-dom";
 
 interface Column {
   id: "organization" | "username" | "email" | "phone" | "date" | "status";
@@ -178,7 +179,12 @@ const SpecificUsersDetails = () => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.email}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value =
+                        column.id === "username" ? (
+                          <Link to="/user">{row[column.id]}</Link>
+                        ) : (
+                          row[column.id]
+                        );
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === "number"

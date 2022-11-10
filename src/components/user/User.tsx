@@ -15,6 +15,7 @@ import GradeIcon from "@mui/icons-material/Grade";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import UserGeneralDetails from "./UserGeneralDetails";
+import { Link } from "react-router-dom";
 
 const cardActionsDescription = [
   { id: "CA1", text: "General Details" },
@@ -29,7 +30,9 @@ const User = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Button startIcon={<KeyboardBackspaceIcon />}>Back to Users</Button>
+        <Button startIcon={<KeyboardBackspaceIcon />}>
+          <Link to="/">Back to Users</Link>
+        </Button>
       </Grid>
       <Grid item xs={12}>
         <Box>
