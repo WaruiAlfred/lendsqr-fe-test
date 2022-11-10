@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material";
+import User from "../user/User";
 import Users from "../users/Users";
 import Navbar from "./Navbar";
 import SideMenu from "./SideMenu";
@@ -17,6 +18,7 @@ const Dashboard = () => {
       <Grid item xs={10}>
         {/* UserDetails */}
         <Users />
+        {/* <User /> */}
       </Grid>
     </Grid>
   );
