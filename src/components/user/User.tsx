@@ -14,6 +14,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import GradeIcon from "@mui/icons-material/Grade";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
+import UserGeneralDetails from "./UserGeneralDetails";
 
 const cardActionsDescription = [
   { id: "CA1", text: "General Details" },
@@ -78,7 +79,9 @@ const User = () => {
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12}></Grid>
+      <Grid item xs={12}>
+        <UserGeneralDetails />
+      </Grid>
     </Grid>
   );
 };
