@@ -8,6 +8,18 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import FilterButton from "./filters/FilterButton";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import {
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import PersonRemoveAlt1OutlinedIcon from "@mui/icons-material/PersonRemoveAlt1Outlined";
+import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
 
 interface Column {
   id: "organization" | "username" | "email" | "phone" | "date" | "status";
@@ -44,7 +56,7 @@ const columns: readonly Column[] = [
   {
     id: "status",
     label: "STATUS",
-    minWidth: 170,
+    minWidth: 110,
     // align: "right",
     // format: (value: number) => value.toFixed(2),
   },
@@ -109,9 +121,18 @@ const rows = [
   // createData("Brazil", "BR", 210147125, 8515767),
 ];
 
+const options = [
+  { id: "O1", text: "View Details", icon: <VisibilityOutlinedIcon /> },
+  { id: "O2", text: "Blacklist User", icon: <PersonRemoveAlt1OutlinedIcon /> },
+  { id: "O3", text: "Activate User", icon: <HowToRegOutlinedIcon /> },
+];
+
 const SpecificUsersDetails = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -122,6 +143,14 @@ const SpecificUsersDetails = () => {
   ) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   return (
@@ -158,6 +187,46 @@ const SpecificUsersDetails = () => {
                         </TableCell>
                       );
                     })}
+                    <TableCell>
+                      <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Open settings">
+                          <IconButton
+                            onClick={handleOpenUserMenu}
+                            sx={{ p: 0 }}
+                          >
+                            <MoreVertIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Menu
+                          sx={{ mt: "45px" }}
+                          id="menu-appbar"
+                          anchorEl={anchorElUser}
+                          anchorOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                          }}
+                          keepMounted
+                          transformOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                          }}
+                          open={Boolean(anchorElUser)}
+                          onClose={handleCloseUserMenu}
+                        >
+                          {options.map((option) => (
+                            <MenuItem
+                              key={option.id}
+                              onClick={handleCloseUserMenu}
+                            >
+                              {option.icon}
+                              <Typography textAlign="center">
+                                {option.text}
+                              </Typography>
+                            </MenuItem>
+                          ))}
+                        </Menu>
+                      </Box>
+                    </TableCell>
                   </TableRow>
                 );
               })}
