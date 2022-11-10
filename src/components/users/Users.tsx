@@ -1,5 +1,4 @@
-import { Grid } from "@mui/material";
-import Title from "./Title";
+import { Grid, Typography } from "@mui/material";
 import SpecificUsersDetails from "./SpecificUsersDetails";
 import GeneralUsersDetails from "./GeneralUsersDetails";
 
@@ -7,7 +6,7 @@ const Users = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Title />
+        <Typography>Users</Typography>;
       </Grid>
       <Grid item xs={12}>
         <GeneralUsersDetails />
