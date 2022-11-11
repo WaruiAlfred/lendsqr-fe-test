@@ -9,7 +9,7 @@ import {
 import Image from "mui-image";
 import { useForm } from "react-hook-form";
 import loginSvg from "../assets/pablo-sign-in 1.svg";
-import styles from "../styles/components/Login.module.scss";
+// import styles from "../styles/components/Login.module.scss";
 import LendsqrLogo from "./helpers/LendsqrLogo";
 
 const Login = () => {
@@ -26,32 +26,23 @@ const Login = () => {
   const handleUserLogin = () => {};
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ padding: "6rem 5rem 0 5rem" }}>
       <Grid item xs={12} sm={6}>
         <LendsqrLogo />
         <Image
           src={loginSvg}
-          className={styles.loginSvg}
+          className={"loginSvg"}
           style={{
-            // position: "absolute",
-            width: "37.5rem",
-            height: "21.1rem",
+            width: "100%",
+            height: "80%",
           }}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Box
-          sx={
-            {
-              // position: "absolute",
-              // top: "13.4rem",
-              // width: "27.9rem",
-            }
-          }
-        >
-          <Container maxWidth="md" className={styles.form}>
+        <Box>
+          <Container maxWidth="md" className={"form"}>
             <Typography
-              className={styles.welcomeTxt}
+              className="welcomeTxt"
               sx={{
                 fontFamily: "Avenir Next",
                 fontStyle: "normal",
@@ -64,7 +55,7 @@ const Login = () => {
               Welcome!
             </Typography>
             <Typography
-              className={styles["form__header"]}
+              className={"form__header"}
               sx={{
                 fontFamily: "Avenir Next",
                 fontStyle: "normal",
@@ -76,21 +67,17 @@ const Login = () => {
               Enter details to login.
             </Typography>
             <form onSubmit={handleSubmit(handleUserLogin)}>
-              <Box
-                display={"flex"}
-                flexDirection={"column"}
-                className={styles["form__body"]}
-              >
+              <Box className={"form__body"}>
                 <TextField
                   id="email"
                   label="Email"
                   // name="email"
                   {...register("email", { required: "Required" })}
-                  value={"johndoe@gmail.com"}
+                  // value={"johndoe@gmail.com"}
                   onChange={(e) => onAddEmailOnChange(e.target.value)}
                   error={!!errors?.email}
                   // helperText={errors?.email ? errors.email.message : null}
-                  className={styles["form__field"]}
+                  className={"form__field"}
                   sx={
                     {
                       // top: "-1.9rem",
@@ -102,24 +89,24 @@ const Login = () => {
                   label="Password"
                   // name="password"
                   {...register("password", { required: "Required" })}
-                  value={"Password"}
+                  // value={"Password"}
                   onChange={(e) => onAddPasswordOnChange(e.target.value)}
                   error={!!errors?.email}
                   // helperText={errors?.password ? errors.password.message : null}
-                  className={styles["form__field"]}
+                  className={"form__field"}
                   sx={
                     {
                       // top: "-0.125rem",
                     }
                   }
                 />
-                <Button className={styles["form__btn-password"]}>
+                <a href="#f" className={"form__btn-password"}>
                   Forgot Password?
-                </Button>
+                </a>
                 <Button
                   type="submit"
                   variant="contained"
-                  className={styles["form__btn-submit"]}
+                  className={"form__btn-submit"}
                 >
                   LOG IN
                 </Button>

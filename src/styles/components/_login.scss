@@ -1,0 +1,74 @@
+@use "../abstracts" as *;
+
+.loginSvg {
+  margin-top: 1.8rem;
+}
+
+.welcomeTxt {
+  color: #213f7d;
+}
+
+.form {
+  &__header {
+    color: #545f7d;
+    margin-top: 1rem !important;
+  }
+
+  &__body {
+    height: 20rem;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  &__field {
+    height: 3.125rem;
+    background: #ffffff;
+    border: 0.125rem solid rgba(84, 95, 125, 0.15);
+    border-radius: 0.313rem;
+    /*
+    position: absolute;
+    width: 27.9rem;
+    // left: 836rem;
+    */
+  }
+
+  &__btn {
+    &-password {
+      // position: absolute;
+      // width: 100%;
+      // height: 2rem;
+      // left: 836rem;
+      // top: 1.875rem;
+
+      font-family: "Avenir Next";
+      font-style: normal;
+      font-weight: 600;
+      // font-size: 2rem;
+      // line-height: 10rem;
+      text-decoration: none;
+
+      text-align: left;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      color: $primary-color !important;
+    }
+
+    &-submit {
+      height: 3.125rem;
+      font-weight: bold;
+      background: $primary-color !important;
+      border-radius: 0.5rem;
+      /*
+      position: absolute;
+      left: 1%;
+      right: 10.9%;
+      top: 110%;
+      bottom: 32.11%;
+
+      */
+    }
+  }
+}
