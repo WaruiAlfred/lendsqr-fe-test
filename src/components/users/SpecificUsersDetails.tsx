@@ -86,45 +86,6 @@ function createData(
   return { organization, username, email, phone, date, status };
 }
 
-// const rows = [
-//   createData(
-//     "Lendsqr",
-//     "Adedeji",
-//     "adedeji@lendsqr.com",
-//     "0712345678",
-//     "May 15,2020 10:00 AM",
-//     "Inactive"
-//   ),
-//   // createData(
-//   //   "Lendsqr",
-//   //   "Adedeji",
-//   //   "adedeji@lendsqr.com",
-//   //   "0712345678",
-//   //   "May 15,2020 10:00 AM",
-//   //   "Inactive"
-//   // ),
-//   // createData(
-//   //   "Lendsqr",
-//   //   "Adedeji",
-//   //   "adedeji@lendsqr.com",
-//   //   "0712345678",
-//   //   "May 15,2020 10:00 AM",
-//   //   "Inactive"
-//   // ),
-//   // createData("United States", "US", 327167434, 9833520),
-//   // createData("Canada", "CA", 37602103, 9984670),
-//   // createData("Australia", "AU", 25475400, 7692024),
-//   // createData("Germany", "DE", 83019200, 357578),
-//   // createData("Ireland", "IE", 4857000, 70273),
-//   // createData("Mexico", "MX", 126577691, 1972550),
-//   // createData("Japan", "JP", 126317000, 377973),
-//   // createData("France", "FR", 67022000, 640679),
-//   // createData("United Kingdom", "GB", 67545757, 242495),
-//   // createData("Russia", "RU", 146793744, 17098246),
-//   // createData("Nigeria", "NG", 200962417, 923768),
-//   // createData("Brazil", "BR", 210147125, 8515767),
-// ];
-
 const options = [
   { id: "O1", text: "View Details", icon: <VisibilityOutlinedIcon /> },
   { id: "O2", text: "Blacklist User", icon: <PersonRemoveAlt1OutlinedIcon /> },
@@ -138,10 +99,10 @@ const SpecificUsersDetails = () => {
     null
   );
   const { data } = useQuery({ queryKey: ["users"], queryFn: fetchAllUsers });
-  console.log(data);
+  // console.log(data);
 
-  const rows = data?.map((dataItem: any) =>
-    createData(
+  const rows = data?.map((dataItem: any) => {
+    const result = createData(
       dataItem.orgName,
       dataItem.userName,
       dataItem.email,
@@ -151,8 +112,13 @@ const SpecificUsersDetails = () => {
         moment(dataItem.lastActiveDate).fromNow().includes("day")
         ? "Active"
         : "Inactive"
-    )
-  );
+    );
+
+    return {
+      result,
+      id: dataItem.id,
+    };
+  });
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -196,13 +162,20 @@ const SpecificUsersDetails = () => {
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row: any) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.email}>
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.result.email}
+                  >
                     {columns.map((column) => {
                       const value =
                         column.id === "username" ? (
-                          <Link to="/user">{row[column.id]}</Link>
+                          <Link to={`/user/${row.id}`}>
+                            {row.result[column.id]}
+                          </Link>
                         ) : (
-                          row[column.id]
+                          row.result[column.id]
                         );
                       return (
                         <TableCell key={column.id} align={column.align}>

@@ -38,154 +38,156 @@ const TableCellInfo: FC<{ title: string; info: string }> = ({
   );
 };
 
-const personalInfoData = [
-  {
-    title: "FULL NAME",
-    info: "Grace Effloam",
-  },
-  {
-    title: "PHONE NUMBER",
-    info: "079843798689",
-  },
-  {
-    title: "EMAIL ADDRESS",
-    info: "grace@gmail.com",
-  },
-  {
-    title: "BVN",
-    info: "078787786767",
-  },
-  {
-    title: "GENDER",
-    info: "Female",
-  },
-];
+const UserGeneralDetails: FC<{ data: any }> = ({ data }) => {
+  const personalInfoData = [
+    {
+      title: "FULL NAME",
+      info: `${data.profile.firstName} ${data.profile.lastName}`,
+    },
+    {
+      title: "PHONE NUMBER",
+      info: `${data.profile.phoneNumber}`,
+    },
+    {
+      title: "EMAIL ADDRESS",
+      info: `${data.email}`,
+    },
+    {
+      title: "BVN",
+      info: `${data.profile.bvn}`,
+    },
+    {
+      title: "GENDER",
+      info: `${data.profile.gender}`,
+    },
+  ];
 
-const educationAndEmploymentData = [
-  {
-    title: "LEVEL OF EDUCATION",
-    info: "B.Sc",
-  },
-  {
-    title: "EMPLOYMENT STATUS",
-    info: "Employed",
-  },
-  {
-    title: "SECTOR OF EMPLOYMENT",
-    info: "FinTech",
-  },
-  {
-    title: "DURATION OF EMPLOYMENT",
-    info: "2 years",
-  },
-  {
-    title: "OFFICE EMAIL",
-    info: "grace@lendsqr.com",
-  },
-  {
-    title: "MONTHLY INCOME",
-    info: "N200,0000.00-N400,000.00",
-  },
-  {
-    title: "LOAN REPAYMENT",
-    info: "40,000",
-  },
-];
+  const educationAndEmploymentData = [
+    {
+      title: "LEVEL OF EDUCATION",
+      info: `${data.education.level}`,
+    },
+    {
+      title: "EMPLOYMENT STATUS",
+      info: `${data.education.employmentStatus}`,
+    },
+    {
+      title: "SECTOR OF EMPLOYMENT",
+      info: `${data.education.sector}`,
+    },
+    {
+      title: "DURATION OF EMPLOYMENT",
+      info: `${data.education.duration}`,
+    },
+    {
+      title: "OFFICE EMAIL",
+      info: `${data.education.officeEmail}`,
+    },
+    {
+      title: "MONTHLY INCOME",
+      info: `${data.education.monthlyIncome?.sort()[0]} - ${
+        data.education.monthlyIncome?.sort()[1]
+      }`,
+    },
+    {
+      title: "LOAN REPAYMENT",
+      info: `${data.education.loanRepayment}`,
+    },
+  ];
 
-const socialsData = [
-  {
-    title: "TWITTER",
-    info: "@grace_effloam",
-  },
-  {
-    title: "FACEBOOK",
-    info: "Grace Effloam",
-  },
-  {
-    title: "INSTAGRAM",
-    info: "@grace_effloam",
-  },
-];
+  const socialsData = [
+    {
+      title: "TWITTER",
+      info: `${data.socials.twitter}`,
+    },
+    {
+      title: "FACEBOOK",
+      info: `${data.socials.facebook}`,
+    },
+    {
+      title: "INSTAGRAM",
+      info: `${data.socials.instagram}`,
+    },
+  ];
 
-const guarantorData = [
-  {
-    title: "FULL NAME",
-    info: "Debby Ogana",
-  },
-  {
-    title: "PHONE NUMBER",
-    info: "0799999",
-  },
-  {
-    title: "EMAIL ADDRESS",
-    info: "debby@gmail.com",
-  },
-  {
-    title: "RELATIONSHIP",
-    info: "Sister",
-  },
-];
+  const guarantorData = [
+    {
+      title: "FULL NAME",
+      info: `${data.guarantor.firstName} ${data.guarantor.lastName}`,
+    },
+    {
+      title: "PHONE NUMBER",
+      info: `${data.guarantor.phoneNumber}`,
+    },
+    {
+      title: "ADDRESS",
+      info: `${data.guarantor.address}`,
+    },
+    {
+      title: "RELATIONSHIP",
+      info: `${data.guarantor.gender === "Male" ? "Brother" : "Sister"}`,
+    },
+  ];
 
-const personalInfo = (
-  <GeneralDetail heading="Personal Information">
-    <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-      {personalInfoData.map((data) => (
-        <TableCellInfo key={data.title} title={data.title} info={data.info} />
-      ))}
-    </TableRow>
-  </GeneralDetail>
-);
+  const personalInfo = (
+    <GeneralDetail heading="Personal Information">
+      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+        {personalInfoData.map((data) => (
+          <TableCellInfo key={data.title} title={data.title} info={data.info} />
+        ))}
+      </TableRow>
+    </GeneralDetail>
+  );
 
-const educationAndEmployment = (
-  <GeneralDetail heading="Education and Employment">
-    <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-      {educationAndEmploymentData.map((data) => (
-        <TableCellInfo key={data.title} title={data.title} info={data.info} />
-      ))}
-    </TableRow>
-  </GeneralDetail>
-);
+  const educationAndEmployment = (
+    <GeneralDetail heading="Education and Employment">
+      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+        {educationAndEmploymentData.map((data) => (
+          <TableCellInfo key={data.title} title={data.title} info={data.info} />
+        ))}
+      </TableRow>
+    </GeneralDetail>
+  );
 
-const socials = (
-  <GeneralDetail heading="Socials">
-    <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-      {socialsData.map((data) => (
-        <TableCellInfo key={data.title} title={data.title} info={data.info} />
-      ))}
-    </TableRow>
-  </GeneralDetail>
-);
+  const socials = (
+    <GeneralDetail heading="Socials">
+      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+        {socialsData.map((data) => (
+          <TableCellInfo key={data.title} title={data.title} info={data.info} />
+        ))}
+      </TableRow>
+    </GeneralDetail>
+  );
 
-const guarantor = (
-  <GeneralDetail heading="Guarantor">
-    <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-      {guarantorData.map((data) => (
-        <TableCellInfo key={data.title} title={data.title} info={data.info} />
-      ))}
-    </TableRow>
-  </GeneralDetail>
-);
+  const guarantor = (
+    <GeneralDetail heading="Guarantor">
+      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+        {guarantorData.map((data) => (
+          <TableCellInfo key={data.title} title={data.title} info={data.info} />
+        ))}
+      </TableRow>
+    </GeneralDetail>
+  );
 
-const rows = [
-  {
-    name: "personalInfo",
-    data: personalInfo,
-  },
-  {
-    name: "educationAndEmplyoment",
-    data: educationAndEmployment,
-  },
-  {
-    name: "socials",
-    data: socials,
-  },
-  {
-    name: "guarantor",
-    data: guarantor,
-  },
-];
+  const rows = [
+    {
+      name: "personalInfo",
+      data: personalInfo,
+    },
+    {
+      name: "educationAndEmplyoment",
+      data: educationAndEmployment,
+    },
+    {
+      name: "socials",
+      data: socials,
+    },
+    {
+      name: "guarantor",
+      data: guarantor,
+    },
+  ];
 
-const UserGeneralDetails = () => {
   return (
     <TableOutline>
       <TableBody>
