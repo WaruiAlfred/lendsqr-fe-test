@@ -1,4 +1,4 @@
-import { Button, Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -24,40 +24,102 @@ import BallotIcon from "@mui/icons-material/Ballot";
 
 const SideMenu = () => {
   return (
-    <Stack direction={"column"} spacing={1}>
-      <Button
-        startIcon={<BusinessCenterIcon />}
-        endIcon={<KeyboardArrowDownIcon />}
-      >
+    <Stack direction={"column"} spacing={1} className="sideMenu">
+      <Box color="inherit" className="sideMenu__option">
+        <BusinessCenterIcon sx={{ marginRight: "1rem" }} />
         Switch Organization
-      </Button>
-      <Button startIcon={<HomeIcon />}>Dashboard</Button>
+        <KeyboardArrowDownIcon sx={{ marginLeft: "1rem" }} />
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <HomeIcon sx={{ marginRight: "1rem" }} />
+        Dashboard
+      </Box>
 
-      <Typography>CUSTOMERS</Typography>
-      <Button startIcon={<GroupIcon />}>Users</Button>
-      <Button startIcon={<GroupsIcon />}>Guarantors</Button>
-      <Button startIcon={<PaidIcon />}>Loans</Button>
-      <Button startIcon={<HandshakeIcon />}>Decision Models</Button>
-      <Button startIcon={<SavingsIcon />}>Savings</Button>
-      <Button startIcon={<RequestPageIcon />}>Loan Requests</Button>
-      <Button startIcon={<PersonAddIcon />}>Whitelist</Button>
-      <Button startIcon={<PersonRemoveIcon />}>Karma</Button>
+      <Typography className="sideMenu__header">CUSTOMERS</Typography>
+      <Box color="inherit" className="sideMenu__option">
+        <GroupIcon sx={{ marginRight: "1rem" }} />
+        Users
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <GroupsIcon sx={{ marginRight: "1rem" }} />
+        Guarantors
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <PaidIcon sx={{ marginRight: "1rem" }} />
+        Loans
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <HandshakeIcon sx={{ marginRight: "1rem" }} />
+        Decision Models
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <SavingsIcon sx={{ marginRight: "1rem" }} />
+        Savings
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <RequestPageIcon sx={{ marginRight: "1rem" }} />
+        Loan Requests
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <PersonAddIcon sx={{ marginRight: "1rem" }} />
+        Whitelist
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <PersonRemoveIcon sx={{ marginRight: "1rem" }} />
+        Karma
+      </Box>
 
-      <Typography>BUSINESSES</Typography>
-      <Button startIcon={<BusinessCenterIcon />}>Organization</Button>
-      <Button startIcon={<PaidIcon />}>Loan Products</Button>
-      <Button startIcon={<AccountBalanceIcon />}>Savings Products</Button>
-      <Button startIcon={<MoneyIcon />}>Fees and Charges</Button>
-      <Button startIcon={<ReceiptIcon />}>Transactions</Button>
-      <Button startIcon={<SettingsIcon />}>Services</Button>
-      <Button startIcon={<ManageAccountsIcon />}>Service Account</Button>
-      <Button startIcon={<ReceiptLongIcon />}>Settlements</Button>
-      <Button startIcon={<AssessmentIcon />}>Reports</Button>
+      <Typography className="sideMenu__header">BUSINESSES</Typography>
+      <Box color="inherit" className="sideMenu__option">
+        <BusinessCenterIcon sx={{ marginRight: "1rem" }} />
+        Organization
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <PaidIcon sx={{ marginRight: "1rem" }} />
+        Loan Products
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <AccountBalanceIcon sx={{ marginRight: "1rem" }} />
+        Savings Products
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <MoneyIcon sx={{ marginRight: "1rem" }} />
+        Fees and Charges
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <ReceiptIcon sx={{ marginRight: "1rem" }} />
+        Transactions
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <SettingsIcon sx={{ marginRight: "1rem" }} />
+        Services
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <ManageAccountsIcon sx={{ marginRight: "1rem" }} />
+        Service Account
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <ReceiptLongIcon sx={{ marginRight: "1rem" }} />
+        Settlements
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <AssessmentIcon sx={{ marginRight: "1rem" }} />
+        Reports
+      </Box>
 
-      <Typography>SETTINGS</Typography>
-      <Button startIcon={<TuneIcon />}>Preferences</Button>
-      <Button startIcon={<MoneyOffIcon />}>Fees and Pricing</Button>
-      <Button startIcon={<BallotIcon />}>Audit Logs</Button>
+      <Typography className="sideMenu__header">SETTINGS</Typography>
+      <Box color="inherit" className="sideMenu__option">
+        <TuneIcon sx={{ marginRight: "1rem" }} />
+        Preferences
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <MoneyOffIcon sx={{ marginRight: "1rem" }} />
+        Fees and Pricing
+      </Box>
+      <Box color="inherit" className="sideMenu__option">
+        <BallotIcon sx={{ marginRight: "1rem" }} />
+        Audit Logs
+      </Box>
     </Stack>
   );
 };

@@ -1,0 +1,45 @@
+@use "../../abstracts" as *;
+
+.sideMenu {
+  background: #fff;
+  box-shadow: 4px 3px 2px #a8a7a7;
+  padding: 2rem 3rem;
+  color: $purple-1 !important;
+
+  &__header {
+    width: 4.6875rem;
+    height: 0.875rem;
+
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem !important;
+    line-height: 1rem !important;
+    color: $purple-2 !important;
+    margin: 1rem 0 !important;
+  }
+
+  &__option {
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    width: 15rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    // margin: 3rem 0;
+
+    &:nth-child(2) {
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: rgba($primary-color, 0.1);
+      border-left: 2px solid $primary-color;
+    }
+  }
+}

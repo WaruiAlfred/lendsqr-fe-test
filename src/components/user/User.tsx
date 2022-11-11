@@ -17,8 +17,8 @@ import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import UserGeneralDetails from "./UserGeneralDetails";
 import { Link, useParams } from "react-router-dom";
 import { fetchSingleUser } from "../../api";
-import { useQuery } from "@tanstack/react-query";
-import { Fragment } from "react";
+// import { useQuery } from "@tanstack/react-query";
+import { Fragment, useEffect, useState } from "react";
 
 const cardActionsDescription = [
   { id: "CA1", text: "General Details" },
@@ -31,78 +31,90 @@ const cardActionsDescription = [
 
 const User = () => {
   const { id } = useParams();
+  const [data, setData] = useState<null | HTMLElement | any>(null);
 
-  const { data } = useQuery({
-    queryKey: ["user", id],
-    queryFn: () => fetchSingleUser(id),
-  });
-  console.log(data);
+  // const { data } = useQuery({
+  //   queryKey: ["user", id],
+  //   queryFn: () => fetchSingleUser(id),
+  // });
+  // console.log(data);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetchSingleUser(id);
+      setData(data);
+      console.log(fetchSingleUser(id));
+      console.log(data);
+    };
+    getData();
+    return () => {
+      getData();
+    };
+  }, [id]);
+
+  if (data !== null && data?.length > 0) {
+    return <Typography>Loading...</Typography>;
+  }
 
   return (
-    <Fragment>
-      {data?.length === 0 ? (
-        <Typography>Loading...</Typography>
-      ) : (
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Button startIcon={<KeyboardBackspaceIcon />}>
-              <Link to="/">Back to Users</Link>
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Button startIcon={<KeyboardBackspaceIcon />}>
+          <Link to="/">Back to Users</Link>
+        </Button>
+      </Grid>
+      <Grid item xs={12}>
+        <Box>
+          <Typography>User Details</Typography>
+          <Box>
+            <Button variant="outlined" color="error">
+              BLACKLIST USER
             </Button>
-          </Grid>
-          <Grid item xs={12}>
+            <Button variant="outlined" color="info">
+              ACTIVATE USER
+            </Button>
+          </Box>
+        </Box>
+      </Grid>
+      <Grid item xs={12}>
+        <Card>
+          <CardContent sx={{ display: "flex" }}>
             <Box>
-              <Typography>User Details</Typography>
+              <Avatar>
+                <PersonOutlineOutlinedIcon />
+              </Avatar>
+              <Typography>{`${data?.profile.firstName} ${data?.profile.lastName}`}</Typography>
+              <Typography>{data?.accountNumber}</Typography>
+            </Box>
+            <Divider orientation="vertical" flexItem />
+            <Box>
+              <Typography>User's Tier</Typography>
               <Box>
-                <Button variant="outlined" color="error">
-                  BLACKLIST USER
-                </Button>
-                <Button variant="outlined" color="info">
-                  ACTIVATE USER
-                </Button>
+                <GradeIcon />
+                <GradeOutlinedIcon />
+                <GradeOutlinedIcon />
               </Box>
             </Box>
-          </Grid>
-          <Grid item xs={12}>
-            <Card>
-              <CardContent sx={{ display: "flex" }}>
-                <Box>
-                  <Avatar>
-                    <PersonOutlineOutlinedIcon />
-                  </Avatar>
-                  <Typography>{`${data?.profile.firstName} ${data?.profile.lastName}`}</Typography>
-                  <Typography>{data?.accountNumber}</Typography>
-                </Box>
-                <Divider orientation="vertical" flexItem />
-                <Box>
-                  <Typography>User's Tier</Typography>
-                  <Box>
-                    <GradeIcon />
-                    <GradeOutlinedIcon />
-                    <GradeOutlinedIcon />
-                  </Box>
-                </Box>
-                <Divider orientation="vertical" flexItem />
-                <Box>
-                  <Typography>
-                    <AttachMoneyOutlinedIcon />
-                    {data?.accountBalance}
-                  </Typography>
-                  <Typography>9973479792392/Providus Bank</Typography>
-                </Box>
-              </CardContent>
-              <CardActions>
-                {cardActionsDescription.map((action: any) => (
-                  <Button key={action.id}>{action.text}</Button>
-                ))}
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <UserGeneralDetails data={data} />
-          </Grid>
-        </Grid>
-      )}
-    </Fragment>
+            <Divider orientation="vertical" flexItem />
+            <Box>
+              <Typography>
+                <AttachMoneyOutlinedIcon />
+                {data?.accountBalance}
+              </Typography>
+              <Typography>9973479792392/Providus Bank</Typography>
+            </Box>
+          </CardContent>
+          <CardActions>
+            {cardActionsDescription.map((action: any) => (
+              <Button key={action.id}>{action.text}</Button>
+            ))}
+          </CardActions>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <UserGeneralDetails data={data} />
+      </Grid>
+    </Grid>
   );
 };
 

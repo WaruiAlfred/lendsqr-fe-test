@@ -5,14 +5,14 @@ import SideMenu from "./SideMenu";
 
 const Dashboard = () => {
   return (
-    <Grid container spacing={0}>
-      <Grid item xs={12}>
+    <Grid container spacing={2}>
+      <Grid item xs={12} marginBottom="5rem">
         <Navbar />
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={3}>
         <SideMenu />
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={9}>
         <Outlet />
       </Grid>
     </Grid>
