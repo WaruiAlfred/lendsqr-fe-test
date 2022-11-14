@@ -9,37 +9,49 @@ const details = [
   {
     id: "d1",
     title: "USERS",
-    icon: <PeopleOutlineIcon />,
+    icon: <PeopleOutlineIcon sx={{ color: "#DF18FF" }} />,
     totalNumber: "2,453",
+    color: "#DF18FF",
   },
   {
     id: "d2",
     title: "ACTIVE USERS",
-    icon: <GroupsOutlinedIcon />,
+    icon: <GroupsOutlinedIcon sx={{ color: "#5718FF" }} />,
     totalNumber: "2,453",
+    color: "#5718FF",
   },
   {
     id: "d3",
     title: "USERS WITH LOANS",
-    icon: <RequestQuoteOutlinedIcon />,
+    icon: <RequestQuoteOutlinedIcon sx={{ color: "#F55F44" }} />,
     totalNumber: "12,453",
+    color: "#F55F44",
   },
   {
     id: "d4",
     title: "USERS WITH SAVINGS",
-    icon: <MoneyOutlinedIcon />,
+    icon: <MoneyOutlinedIcon sx={{ color: "#FF3366" }} />,
     totalNumber: "102,453",
+    color: "#FF3366",
   },
 ];
 
 const GeneralUsersDetails = () => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        fontFamily: "Work Sans",
+        fontStyle: "normal",
+      }}
+    >
       {details.map((detail) => (
         <GeneralUsersDetailsCard
           key={detail.id}
           title={detail.title}
           totalNumber={detail.totalNumber}
+          color={detail.color}
         >
           {detail.icon}
         </GeneralUsersDetailsCard>
