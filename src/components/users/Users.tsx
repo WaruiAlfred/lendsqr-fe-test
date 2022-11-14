@@ -4,9 +4,20 @@ import GeneralUsersDetails from "./GeneralUsersDetails";
 
 const Users = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ padding: "2rem 2rem" }}>
       <Grid item xs={12}>
-        <Typography>Users</Typography>;
+        <Typography
+          sx={{
+            fontFamily: "Work Sans",
+            fontStyle: "normal",
+            fontWeight: 500,
+            fontSize: "24px",
+            lineHeight: "28px",
+            color: "#213F7D",
+          }}
+        >
+          Users
+        </Typography>
       </Grid>
       <Grid item xs={12}>
         <GeneralUsersDetails />

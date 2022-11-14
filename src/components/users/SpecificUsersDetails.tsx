@@ -171,7 +171,10 @@ const SpecificUsersDetails = () => {
                     {columns.map((column) => {
                       const value =
                         column.id === "username" ? (
-                          <Link to={`/user/${row.id}`}>
+                          <Link
+                            className="username-link"
+                            to={`/user/${row.id}`}
+                          >
                             {row.result[column.id]}
                           </Link>
                         ) : (

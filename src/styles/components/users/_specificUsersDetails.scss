@@ -1,0 +1,10 @@
+@use "../../abstracts" as *;
+
+.username-link {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    cursor: pointer;
+    color: $purple-1;
+  }
+}
