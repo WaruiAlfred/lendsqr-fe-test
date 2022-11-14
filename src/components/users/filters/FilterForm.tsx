@@ -79,23 +79,13 @@ const FilterForm: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(handleSetFilters)}>
-      <Box display={"flex"} flexDirection={"column"}>
-        {/*
-                  Organization - select
-                  Username - text
-                  email - text
-                  date - date picker
-                  phone number - text
-                  status - select
-                  reset and filter buttons
-                */}
-
-        <FormControl fullWidth>
+      <Box display={"flex"} flexDirection={"column"} className="form">
+        <FormControl fullWidth className="form__field">
           <InputLabel id="organization">Organization</InputLabel>
           <Select
             labelId="organization"
             id="organization"
-            value={"organization"}
+            // value={"organization"}
             label="Organization"
             // onChange={handleChange}
           >
@@ -109,47 +99,51 @@ const FilterForm: FC = () => {
           label="Username"
           // name="username"
           {...register("username")}
-          value={"username"}
+          // value={"username"}
           // onChange={(e) => onAddusernameOnChange(e.target.value)}
           error={!!errors?.username}
           // helperText={errors?.username ? errors.username.message : null}
+          className="form__field"
         />
         <TextField
           id="email"
           label="Email"
           // name="email"
           {...register("email")}
-          value={"johndoe@gmail.com"}
+          // value={"johndoe@gmail.com"}
           // onChange={(e) => onAddEmailOnChange(e.target.value)}
           error={!!errors?.email}
           // helperText={errors?.email ? errors.email.message : null}
+          className="form__field"
         />
         <TextField
           id="date"
           label="Date"
           // name="date"
           {...register("date")}
-          value={"date"}
+          // value={"date"}
           // onChange={(e) => onAdddateOnChange(e.target.value)}
           error={!!errors?.date}
           // helperText={errors?.date ? errors.date.message : null}
+          className="form__field"
         />
         <TextField
           id="phoneNumber"
           label="Phone Number"
           // name="phoneNumber"
           {...register("phoneNumber")}
-          value={"phoneNumber"}
+          // value={"phoneNumber"}
           // onChange={(e) => onAddphoneNumberOnChange(e.target.value)}
           error={!!errors?.phoneNumber}
           // helperText={errors?.phoneNumber ? errors.phoneNumber.message : null}
+          className="form__field"
         />
-        <FormControl fullWidth>
+        <FormControl fullWidth className="form__field">
           <InputLabel id="status">Status</InputLabel>
           <Select
             labelId="status"
             id="status"
-            value={"status"}
+            // value={"status"}
             label="status"
             // onChange={handleChange}
           >
@@ -157,10 +151,18 @@ const FilterForm: FC = () => {
             <MenuItem value={"inactive"}>Inactive</MenuItem>
           </Select>
         </FormControl>
-        <Button variant="outlined">Reset</Button>
-        <Button type="submit" variant="contained">
-          Filter
-        </Button>
+        <Box
+          display={"flex"}
+          justifyContent="space-between"
+          alignItems={"center"}
+        >
+          <Button variant="outlined" className="form__button">
+            Reset
+          </Button>
+          <Button type="submit" variant="contained" className="form__button">
+            Filter
+          </Button>
+        </Box>
       </Box>
     </form>
   );

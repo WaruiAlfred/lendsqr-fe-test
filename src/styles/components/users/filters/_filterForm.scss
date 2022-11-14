@@ -1,0 +1,19 @@
+@use "../../../abstracts" as *;
+
+.form {
+  &__field {
+    margin-bottom: 1rem !important;
+    color: $purple-2 !important;
+  }
+  &__button {
+    width: 7rem;
+    &:first-child {
+      border: 1px solid $purple-2;
+      color: $purple-2;
+    }
+    &:last-child {
+      color: #fff;
+      background-color: $primary-color;
+    }
+  }
+}

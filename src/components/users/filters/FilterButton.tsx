@@ -19,7 +19,7 @@ const FilterButton = () => {
   return (
     <Fragment>
       <Tooltip title="Filter list">
-        <IconButton onClick={handleOpenFilterForm} sx={{ p: 0 }}>
+        <IconButton onClick={handleOpenFilterForm} sx={{ p: 0, ml: 1 }}>
           <FilterListIcon />
         </IconButton>
       </Tooltip>
