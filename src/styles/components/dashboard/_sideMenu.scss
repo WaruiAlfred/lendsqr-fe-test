@@ -11,7 +11,7 @@
     width: 4.6875rem;
     height: 0.875rem;
 
-    font-family: "Work Sans";
+    font-family: $work-sans-font;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem !important;
@@ -21,7 +21,7 @@
   }
 
   &__option {
-    font-family: "Work Sans";
+    font-family: $work-sans-font;
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
