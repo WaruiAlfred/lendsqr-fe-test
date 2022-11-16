@@ -87,12 +87,9 @@ function ResponsiveNavBar() {
 
   return (
     <AppBar position="fixed" className="navbar">
-      {/* <Container maxWidth="xl"> */}
       <Toolbar>
-        {/* Logo */}
         <LendsqrLogo />
 
-        {/* Search Bar */}
         <SearchWrapper>
           <Search>
             <StyledInputBase
@@ -205,7 +202,6 @@ function ResponsiveNavBar() {
           </Menu>
         </Box>
       </Toolbar>
-      {/* </Container> */}
     </AppBar>
   );
 }
