@@ -22,7 +22,7 @@ import PersonRemoveAlt1OutlinedIcon from "@mui/icons-material/PersonRemoveAlt1Ou
 import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAllUsers } from "../../api";
+import { fetchAllUsers, fetchSingleUser } from "../../api";
 import moment from "moment";
 
 interface Column {
@@ -98,8 +98,17 @@ const SpecificUsersDetails = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  const [singleUserData, setSingleUserData] = React.useState<
+    null | HTMLElement | any
+  >(null);
   const { data } = useQuery({ queryKey: ["users"], queryFn: fetchAllUsers });
   // console.log(data);
+  const getData = async (id: string) => {
+    const data = await fetchSingleUser(id);
+    setSingleUserData(data);
+    console.log(fetchSingleUser(id));
+    console.log(data);
+  };
 
   const rows = data?.map((dataItem: any) => {
     const result = createData(
@@ -172,8 +181,10 @@ const SpecificUsersDetails = () => {
                       const value =
                         column.id === "username" ? (
                           <Link
+                            onClick={() => getData(row.id)}
                             className="username-link"
-                            to={`/user/${row.id}`}
+                            to={data !== null ? `/user/${row.id}` : "/"}
+                            state={{ data: singleUserData }}
                           >
                             {row.result[column.id]}
                           </Link>

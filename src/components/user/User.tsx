@@ -15,10 +15,10 @@ import GradeIcon from "@mui/icons-material/Grade";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import UserGeneralDetails from "./UserGeneralDetails";
-import { Link, useParams } from "react-router-dom";
-import { fetchSingleUser } from "../../api";
+import { Link, useParams, useLocation } from "react-router-dom";
+// import { fetchSingleUser } from "../../api";
 // import { useQuery } from "@tanstack/react-query";
-import { Fragment, useEffect, useState } from "react";
+import { FC } from "react";
 
 const cardActionsDescription = [
   { id: "CA1", text: "General Details" },
@@ -29,9 +29,11 @@ const cardActionsDescription = [
   { id: "CA6", text: "App and System " },
 ];
 
-const User = () => {
-  const { id } = useParams();
-  const [data, setData] = useState<null | HTMLElement | any>(null);
+const User: FC = () => {
+  const data = useLocation().state;
+  console.log(data);
+  // const { id } = useParams();
+  // const [data, setData] = useState<null | HTMLElement | any>(null);
 
   // const { data } = useQuery({
   //   queryKey: ["user", id],
@@ -39,18 +41,18 @@ const User = () => {
   // });
   // console.log(data);
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await fetchSingleUser(id);
-      setData(data);
-      console.log(fetchSingleUser(id));
-      console.log(data);
-    };
-    getData();
-    return () => {
-      getData();
-    };
-  }, [id]);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const data = await fetchSingleUser(id);
+  //     setData(data);
+  //     console.log(fetchSingleUser(id));
+  //     console.log(data);
+  //   };
+  //   getData();
+  //   return () => {
+  //     getData();
+  //   };
+  // }, [id]);
 
   if (data !== null && data?.length > 0) {
     return <Typography>Loading...</Typography>;
@@ -83,7 +85,7 @@ const User = () => {
               <Avatar>
                 <PersonOutlineOutlinedIcon />
               </Avatar>
-              <Typography>{`${data?.profile.firstName} ${data?.profile.lastName}`}</Typography>
+              <Typography>{`${data?.profile?.firstName} ${data?.profile?.lastName}`}</Typography>
               <Typography>{data?.accountNumber}</Typography>
             </Box>
             <Divider orientation="vertical" flexItem />

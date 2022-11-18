@@ -39,93 +39,97 @@ const TableCellInfo: FC<{ title: string; info: string }> = ({
 };
 
 const UserGeneralDetails: FC<{ data: any }> = ({ data }) => {
+  if (data !== null && data?.length > 0) {
+    return <Typography>Loading...</Typography>;
+  }
+
   const personalInfoData = [
     {
       title: "FULL NAME",
-      info: `${data.profile.firstName} ${data.profile.lastName}`,
+      info: `${data?.profile?.firstName} ${data?.profile?.lastName}`,
     },
     {
       title: "PHONE NUMBER",
-      info: `${data.profile.phoneNumber}`,
+      info: `${data?.profile?.phoneNumber}`,
     },
     {
       title: "EMAIL ADDRESS",
-      info: `${data.email}`,
+      info: `${data?.email}`,
     },
     {
       title: "BVN",
-      info: `${data.profile.bvn}`,
+      info: `${data?.profile?.bvn}`,
     },
     {
       title: "GENDER",
-      info: `${data.profile.gender}`,
+      info: `${data?.profile?.gender}`,
     },
   ];
 
   const educationAndEmploymentData = [
     {
       title: "LEVEL OF EDUCATION",
-      info: `${data.education.level}`,
+      info: `${data?.education?.level}`,
     },
     {
       title: "EMPLOYMENT STATUS",
-      info: `${data.education.employmentStatus}`,
+      info: `${data?.education?.employmentStatus}`,
     },
     {
       title: "SECTOR OF EMPLOYMENT",
-      info: `${data.education.sector}`,
+      info: `${data?.education?.sector}`,
     },
     {
       title: "DURATION OF EMPLOYMENT",
-      info: `${data.education.duration}`,
+      info: `${data?.education?.duration}`,
     },
     {
       title: "OFFICE EMAIL",
-      info: `${data.education.officeEmail}`,
+      info: `${data?.education?.officeEmail}`,
     },
     {
       title: "MONTHLY INCOME",
-      info: `${data.education.monthlyIncome?.sort()[0]} - ${
-        data.education.monthlyIncome?.sort()[1]
+      info: `${data?.education?.monthlyIncome?.sort()[0]} - ${
+        data?.education?.monthlyIncome?.sort()[1]
       }`,
     },
     {
       title: "LOAN REPAYMENT",
-      info: `${data.education.loanRepayment}`,
+      info: `${data?.education?.loanRepayment}`,
     },
   ];
 
   const socialsData = [
     {
       title: "TWITTER",
-      info: `${data.socials.twitter}`,
+      info: `${data?.socials?.twitter}`,
     },
     {
       title: "FACEBOOK",
-      info: `${data.socials.facebook}`,
+      info: `${data?.socials?.facebook}`,
     },
     {
       title: "INSTAGRAM",
-      info: `${data.socials.instagram}`,
+      info: `${data?.socials?.instagram}`,
     },
   ];
 
   const guarantorData = [
     {
       title: "FULL NAME",
-      info: `${data.guarantor.firstName} ${data.guarantor.lastName}`,
+      info: `${data?.guarantor?.firstName} ${data?.guarantor?.lastName}`,
     },
     {
       title: "PHONE NUMBER",
-      info: `${data.guarantor.phoneNumber}`,
+      info: `${data?.guarantor?.phoneNumber}`,
     },
     {
       title: "ADDRESS",
-      info: `${data.guarantor.address}`,
+      info: `${data?.guarantor?.address}`,
     },
     {
       title: "RELATIONSHIP",
-      info: `${data.guarantor.gender === "Male" ? "Brother" : "Sister"}`,
+      info: `${data?.guarantor?.gender === "Male" ? "Brother" : "Sister"}`,
     },
   ];
 
