@@ -15,9 +15,9 @@ import GradeIcon from "@mui/icons-material/Grade";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import UserGeneralDetails from "./UserGeneralDetails";
-import { Link, useParams, useLocation } from "react-router-dom";
-// import { fetchSingleUser } from "../../api";
-// import { useQuery } from "@tanstack/react-query";
+import { Link, useLocation } from "react-router-dom";
+import { fetchSingleUser } from "../../api";
+import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 
 const cardActionsDescription = [
@@ -30,29 +30,12 @@ const cardActionsDescription = [
 ];
 
 const User: FC = () => {
-  const data = useLocation().state;
-  console.log(data);
-  // const { id } = useParams();
-  // const [data, setData] = useState<null | HTMLElement | any>(null);
+  const { id } = useLocation().state;
 
-  // const { data } = useQuery({
-  //   queryKey: ["user", id],
-  //   queryFn: () => fetchSingleUser(id),
-  // });
-  // console.log(data);
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const data = await fetchSingleUser(id);
-  //     setData(data);
-  //     console.log(fetchSingleUser(id));
-  //     console.log(data);
-  //   };
-  //   getData();
-  //   return () => {
-  //     getData();
-  //   };
-  // }, [id]);
+  const { data } = useQuery({
+    queryKey: ["user", id],
+    queryFn: () => fetchSingleUser(id),
+  });
 
   if (data !== null && data?.length > 0) {
     return <Typography>Loading...</Typography>;

@@ -22,8 +22,9 @@ import PersonRemoveAlt1OutlinedIcon from "@mui/icons-material/PersonRemoveAlt1Ou
 import HowToRegOutlinedIcon from "@mui/icons-material/HowToRegOutlined";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAllUsers, fetchSingleUser } from "../../api";
+import { fetchAllUsers } from "../../api";
 import moment from "moment";
+import UserStatus from "./UserStatus";
 
 interface Column {
   id: "organization" | "username" | "email" | "phone" | "date" | "status";
@@ -98,17 +99,8 @@ const SpecificUsersDetails = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
-  const [singleUserData, setSingleUserData] = React.useState<
-    null | HTMLElement | any
-  >(null);
+
   const { data } = useQuery({ queryKey: ["users"], queryFn: fetchAllUsers });
-  // console.log(data);
-  const getData = async (id: string) => {
-    const data = await fetchSingleUser(id);
-    setSingleUserData(data);
-    console.log(fetchSingleUser(id));
-    console.log(data);
-  };
 
   const rows = data?.map((dataItem: any) => {
     const result = createData(
@@ -120,7 +112,11 @@ const SpecificUsersDetails = () => {
       +moment(dataItem.lastActiveDate)?.fromNow()?.slice(0) <= 7 &&
         moment(dataItem.lastActiveDate).fromNow().includes("day")
         ? "Active"
-        : "Inactive"
+        : +moment(dataItem.lastActiveDate)?.fromNow()?.slice(0) > 7
+        ? "Inactive"
+        : +moment(dataItem.lastActiveDate)?.fromNow()?.slice(0) > 14
+        ? "Pending"
+        : "Blacklisted"
     );
 
     return {
@@ -150,7 +146,7 @@ const SpecificUsersDetails = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer sx={{ maxHeight: 730 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -181,13 +177,16 @@ const SpecificUsersDetails = () => {
                       const value =
                         column.id === "username" ? (
                           <Link
-                            onClick={() => getData(row.id)}
                             className="username-link"
-                            to={data !== null ? `/user/${row.id}` : "/"}
-                            state={{ data: singleUserData }}
+                            to={`/user/${row.id}`}
+                            state={{ id: row.id }}
                           >
                             {row.result[column.id]}
                           </Link>
+                        ) : column.id === "status" ? (
+                          <UserStatus status={row.result[column.id]}>
+                            {row.result[column.id]}
+                          </UserStatus>
                         ) : (
                           row.result[column.id]
                         );
@@ -231,7 +230,7 @@ const SpecificUsersDetails = () => {
                               onClick={handleCloseUserMenu}
                             >
                               {option.icon}
-                              <Typography textAlign="center">
+                              <Typography textAlign="center" ml={1}>
                                 {option.text}
                               </Typography>
                             </MenuItem>
@@ -246,7 +245,7 @@ const SpecificUsersDetails = () => {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[10, 25, 50, 100]}
         component="div"
         count={rows?.length}
         rowsPerPage={rowsPerPage}
