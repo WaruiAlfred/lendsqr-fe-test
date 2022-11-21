@@ -9,7 +9,6 @@ import {
 import Image from "mui-image";
 import { useForm } from "react-hook-form";
 import loginSvg from "../assets/pablo-sign-in 1.svg";
-// import styles from "../styles/components/Login.module.scss";
 import LendsqrLogo from "./helpers/LendsqrLogo";
 
 const Login = () => {
