@@ -1,0 +1,29 @@
+@use "../../abstracts" as *;
+
+.back-to-users {
+  font-family: $work-sans-font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: $purple-2;
+  text-decoration: none;
+
+  &:hover {
+    color: $purple-1;
+    transform: scale(1.01);
+  }
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:first-child {
+    font-family: $work-sans-font;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    color: $purple-1;
+  }
+}
