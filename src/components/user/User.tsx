@@ -42,17 +42,19 @@ const User: FC = () => {
   }
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} padding="4.7rem 2.5rem">
       <Grid item xs={12}>
-        <Button startIcon={<KeyboardBackspaceIcon />}>
-          <Link to="/">Back to Users</Link>
+        <Button startIcon={<KeyboardBackspaceIcon sx={{ color: "#545F7D" }} />}>
+          <Link to="/" className="back-to-users">
+            Back to Users
+          </Link>
         </Button>
       </Grid>
       <Grid item xs={12}>
-        <Box>
-          <Typography>User Details</Typography>
-          <Box>
-            <Button variant="outlined" color="error">
+        <Box className="user-details">
+          <Typography sx={{ fontSize: "1.5rem" }}>User Details</Typography>
+          <Box sx={{ fontWeight: "bold" }}>
+            <Button variant="outlined" color="error" sx={{ marginRight: 2 }}>
               BLACKLIST USER
             </Button>
             <Button variant="outlined" color="info">
