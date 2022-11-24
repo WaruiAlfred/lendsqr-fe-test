@@ -27,3 +27,33 @@
     color: $purple-1;
   }
 }
+
+.user-identification {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5rem;
+
+  &-1 {
+    font-family: $work-sans-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem !important;
+    line-height: 1.625rem;
+    color: $purple-1;
+  }
+
+  &-2 {
+    font-size: 0.875rem !important;
+    color: $purple-2;
+  }
+}
+
+.user-action {
+  color: #000 !important;
+
+  &:first-child,
+  &:hover {
+    color: $primary-color !important;
+    border-bottom: 0.1rem solid $primary-color;
+  }
+}
