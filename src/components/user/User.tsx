@@ -10,10 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+// import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import GradeIcon from "@mui/icons-material/Grade";
 import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
-import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
 import UserGeneralDetails from "./UserGeneralDetails";
 import { Link, useLocation } from "react-router-dom";
 import { fetchSingleUser } from "../../api";
@@ -65,35 +64,73 @@ const User: FC = () => {
       </Grid>
       <Grid item xs={12}>
         <Card>
-          <CardContent sx={{ display: "flex" }}>
-            <Box>
-              <Avatar>
-                <PersonOutlineOutlinedIcon />
+          <CardContent
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              padding: "2rem 1.6rem 0 1.6rem",
+            }}
+          >
+            <Box
+              sx={{
+                width: "17rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Avatar
+                sx={{ height: "6rem", width: "6rem" }}
+                alt={data?.profile?.firstName}
+                src={data?.profile?.avatar}
+              >
+                {/* <PersonOutlineOutlinedIcon /> */}
               </Avatar>
-              <Typography>{`${data?.profile?.firstName} ${data?.profile?.lastName}`}</Typography>
-              <Typography>{data?.accountNumber}</Typography>
-            </Box>
-            <Divider orientation="vertical" flexItem />
-            <Box>
-              <Typography>User's Tier</Typography>
-              <Box>
-                <GradeIcon />
-                <GradeOutlinedIcon />
-                <GradeOutlinedIcon />
+              <Box className="user-identification">
+                <Typography className="user-identification-1">{`${data?.profile?.firstName} ${data?.profile?.lastName}`}</Typography>
+                <Typography className="user-identification-2">
+                  {data?.accountNumber}
+                </Typography>
               </Box>
             </Box>
-            <Divider orientation="vertical" flexItem />
-            <Box>
-              <Typography>
-                <AttachMoneyOutlinedIcon />
-                {data?.accountBalance}
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ margin: "0 0.7rem" }}
+            />
+            <Box sx={{ width: "6rem", marginLeft: "1rem" }}>
+              <Typography
+                sx={{
+                  color: "#545F7D",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                }}
+              >
+                User's Tier
               </Typography>
-              <Typography>9973479792392/Providus Bank</Typography>
+              <Box>
+                <GradeIcon sx={{ color: "#E9B200" }} />
+                <GradeOutlinedIcon sx={{ color: "#E9B200" }} />
+                <GradeOutlinedIcon sx={{ color: "#E9B200" }} />
+              </Box>
+            </Box>
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ margin: "0 0.7rem" }}
+            />
+            <Box sx={{ color: "#213F7D" }}>
+              <Typography sx={{ fontSize: "1.375rem" }}>
+                &#x20A6; {data?.accountBalance}
+              </Typography>
+              <Typography>9973479792392 / Providus Bank</Typography>
             </Box>
           </CardContent>
-          <CardActions>
+          <CardActions sx={{ padding: "0.6rem 1.5rem" }}>
             {cardActionsDescription.map((action: any) => (
-              <Button key={action.id}>{action.text}</Button>
+              <Button className="user-action" key={action.id}>
+                {action.text}
+              </Button>
             ))}
           </CardActions>
         </Card>
