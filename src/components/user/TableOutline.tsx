@@ -6,7 +6,10 @@ import Paper from "@mui/material/Paper";
 const TableOutline: FC<{ children: any }> = ({ children }) => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="user data table">
+      <Table
+        sx={{ minWidth: 650, minHeight: 960 }}
+        aria-label="user data table"
+      >
         {children}
       </Table>
     </TableContainer>

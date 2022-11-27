@@ -1,28 +1,33 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableOutline from "./TableOutline";
-import { Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 const GeneralDetail: FC<{ children: any; heading: string }> = ({
   children,
   heading,
 }) => {
   return (
-    <TableOutline>
-      <TableHead>
-        <TableRow>
-          <TableCell>{heading}</TableCell>
+    <Box sx={{ padding: "1rem 1.6rem" }}>
+      {/* <TableHead> */}
+
+      {/* </TableHead> */}
+      <Typography>{heading}</Typography>
+      {/* <TableBody> */}
+      {/* <TableRow>
           <TableCell></TableCell>
           <TableCell></TableCell>
           <TableCell></TableCell>
           <TableCell></TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>{children}</TableBody>
-    </TableOutline>
+        </TableRow> */}
+      {children}
+      {/* <Divider variant="middle" /> */}
+      {/* </TableBody> */}
+    </Box>
   );
 };
 
@@ -31,9 +36,9 @@ const TableCellInfo: FC<{ title: string; info: string }> = ({
   info,
 }) => {
   return (
-    <TableCell>
-      <Typography>{title}</Typography>
-      <Typography>{info}</Typography>
+    <TableCell sx={{ width: "8rem" }}>
+      <Typography className="textContainer">{title}</Typography>
+      <Typography className="textContainer">{info}</Typography>
     </TableCell>
   );
 };
@@ -135,41 +140,41 @@ const UserGeneralDetails: FC<{ data: any }> = ({ data }) => {
 
   const personalInfo = (
     <GeneralDetail heading="Personal Information">
-      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-        {personalInfoData.map((data) => (
-          <TableCellInfo key={data.title} title={data.title} info={data.info} />
-        ))}
-      </TableRow>
+      {/* <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}> */}
+      {personalInfoData.map((data) => (
+        <TableCellInfo key={data.title} title={data.title} info={data.info} />
+      ))}
+      {/* </TableRow> */}
     </GeneralDetail>
   );
 
   const educationAndEmployment = (
     <GeneralDetail heading="Education and Employment">
-      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-        {educationAndEmploymentData.map((data) => (
-          <TableCellInfo key={data.title} title={data.title} info={data.info} />
-        ))}
-      </TableRow>
+      {/* <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}> */}
+      {educationAndEmploymentData.map((data) => (
+        <TableCellInfo key={data.title} title={data.title} info={data.info} />
+      ))}
+      {/* </TableRow> */}
     </GeneralDetail>
   );
 
   const socials = (
     <GeneralDetail heading="Socials">
-      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-        {socialsData.map((data) => (
-          <TableCellInfo key={data.title} title={data.title} info={data.info} />
-        ))}
-      </TableRow>
+      {/* <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}> */}
+      {socialsData.map((data) => (
+        <TableCellInfo key={data.title} title={data.title} info={data.info} />
+      ))}
+      {/* </TableRow> */}
     </GeneralDetail>
   );
 
   const guarantor = (
     <GeneralDetail heading="Guarantor">
-      <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-        {guarantorData.map((data) => (
-          <TableCellInfo key={data.title} title={data.title} info={data.info} />
-        ))}
-      </TableRow>
+      {/* <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}> */}
+      {guarantorData.map((data) => (
+        <TableCellInfo key={data.title} title={data.title} info={data.info} />
+      ))}
+      {/* </TableRow> */}
     </GeneralDetail>
   );
 
@@ -192,16 +197,18 @@ const UserGeneralDetails: FC<{ data: any }> = ({ data }) => {
     },
   ];
 
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    // hide last border
+    "&:last-child td, &:last-child th": {
+      border: 0,
+    },
+  }));
+
   return (
     <TableOutline>
       <TableBody>
         {rows.map((row) => (
-          <TableRow
-            key={row.name}
-            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-          >
-            {row.data}
-          </TableRow>
+          <StyledTableRow key={row.name}>{row.data}</StyledTableRow>
         ))}
       </TableBody>
     </TableOutline>
