@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Divider } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -21,6 +21,8 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import TuneIcon from "@mui/icons-material/Tune";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import BallotIcon from "@mui/icons-material/Ballot";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { FC, Fragment } from "react";
 
 const SideMenuOption: FC<{ children: any }> = ({ children }) => {
@@ -249,6 +251,15 @@ const options = [
           </Fragment>
         ),
       },
+      {
+        name: "SystemsMessages",
+        content: (
+          <Fragment>
+            <AccessTimeFilledIcon sx={{ marginRight: "1rem" }} />
+            Systems Messages
+          </Fragment>
+        ),
+      },
     ],
   },
 ];
@@ -298,6 +309,16 @@ const SideMenu: FC = () => {
             ))
           : null
       )}
+
+      <Divider
+        orientation="horizontal"
+        sx={{ marginTop: "5rem !important", width: "100%" }}
+      />
+      <SideMenuOption>
+        <LogoutIcon sx={{ marginRight: "1rem" }} />
+        Logout
+      </SideMenuOption>
+      <SideMenuOption>v1.2.0</SideMenuOption>
     </Stack>
   );
 };
