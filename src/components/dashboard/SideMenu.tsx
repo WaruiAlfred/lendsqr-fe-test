@@ -1,3 +1,4 @@
+import { FC, Fragment } from "react";
 import { Typography, Box, Divider } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
@@ -23,7 +24,7 @@ import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 import BallotIcon from "@mui/icons-material/Ballot";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { FC, Fragment } from "react";
+import { useLocation } from "react-router-dom";
 
 const SideMenuOption: FC<{ children: any }> = ({ children }) => {
   return (
@@ -265,6 +266,10 @@ const options = [
 ];
 
 const SideMenu: FC = () => {
+  const location = useLocation();
+  console.log(location);
+  const currentPathUser = location.pathname.includes("/user/");
+
   return (
     <Stack direction={"column"} spacing={1} className="sideMenu">
       {options.map((option) =>
@@ -302,23 +307,35 @@ const SideMenu: FC = () => {
       <Typography className="sideMenu__header">SETTINGS</Typography>
       {options.map((option) =>
         option.header === "settings"
-          ? option.data.map((optionItem) => (
-              <SideMenuOption key={optionItem.name}>
-                {optionItem.content}
-              </SideMenuOption>
-            ))
+          ? currentPathUser
+            ? option.data.map((optionItem) => (
+                <SideMenuOption key={optionItem.name}>
+                  {optionItem.content}
+                </SideMenuOption>
+              ))
+            : option.data
+                .filter((optionItem) => optionItem.name !== "SystemsMessages")
+                .map((optionItem) => (
+                  <SideMenuOption key={optionItem.name}>
+                    {optionItem.content}
+                  </SideMenuOption>
+                ))
           : null
       )}
 
-      <Divider
-        orientation="horizontal"
-        sx={{ marginTop: "5rem !important", width: "100%" }}
-      />
-      <SideMenuOption>
-        <LogoutIcon sx={{ marginRight: "1rem" }} />
-        Logout
-      </SideMenuOption>
-      <SideMenuOption>v1.2.0</SideMenuOption>
+      {currentPathUser && (
+        <Fragment>
+          <Divider
+            orientation="horizontal"
+            sx={{ marginTop: "5rem !important", width: "100%" }}
+          />
+          <SideMenuOption>
+            <LogoutIcon sx={{ marginRight: "1rem" }} />
+            Logout
+          </SideMenuOption>
+          <SideMenuOption>v1.2.0</SideMenuOption>
+        </Fragment>
+      )}
     </Stack>
   );
 };
